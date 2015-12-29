@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>Just A Bit Pushy</title>
+</head>
+
+<body>
+    <time></time>
+    <div id="container">
+        Hello Dorks! This is the content that is updated live.
+    </div>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:1976');
+    socket.on('notification', function(data) {
+        var _data = JSON.parse(data);
+        $('#container').html(_data.test.sample);
+        $('time').html('Last Update:' + new Date());
+    });
+    </script>
+</body>
+
+</html>
